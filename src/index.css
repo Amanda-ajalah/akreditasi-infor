@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Menggunakan Poppins agar modern dan bersih */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
+
+:root {
+  font-family: "Poppins", sans-serif;
+
+  /* Definisi Warna Akurat dari Gambar */
+  --color-untag-maroon: #a50000;
+  --color-if-cyan: #00b4d8;
+  --color-menu-bg: #f0f9ff; /* Biru sangat muda */
+  --color-text-main: #2d3436;
+  --color-table-header: #f8fafc;
+}
+
+body {
+  @apply bg-gray-50 text-[#2D3436] antialiased;
+}
+
+/* Kustom Scrollbar agar Rapi */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 rounded-full hover:bg-gray-400;
+}
