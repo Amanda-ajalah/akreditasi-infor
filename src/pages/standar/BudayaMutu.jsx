@@ -1,95 +1,224 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../../components/Navbar";
-import { FileSearch, ChevronLeft } from "lucide-react";
-// import { useNavigate } from "react-router-dom";
+import { FileSearch } from "lucide-react";
 
 const BudayaMutu = () => {
-  // const navigate = useNavigate();
+  const [expandedIndex, setExpandedIndex] = useState(null);
 
-  // Data dummy sesuai permintaan: 4 kolom (Butir, Baku Mutu, Elemen/Narasi, Detail)
-  // Saya gabungkan Elemen & Narasi agar pas 4 kolom utama yang efektif
   const dataBudayaMutu = [
     {
-      butir: "1.1",
-      bakuMutu: "Ketersediaan dokumen formal SPMI",
-      elemenNarasi:
-        "Prodi memiliki dokumen kebijakan SPMI yang lengkap dan disahkan oleh Dekan.",
-      pathDetail: "#",
+      butir: "1.1 [PENETAPAN]",
+      element:
+        "1.1.A. Kebijakan, standar, dan indikator terkait Sistem Tata Kelola UPPS dan/atau PT berikut SOP, yang mencakup administrasi akademik, keuangan, SDM, dan aspek lain dalam siklus PPEPP, di tingkat UPPS dan/atau PT.",
+      dokumen:
+        "1.1.A.1 Kebijakan, standar, dan indikator terkait Sistem Tata Kelola UPPS dan/atau PT berikut SOP, yang mencakup administrasi akademik dalam siklus PPEPP, di tingkat UPPS dan/atau PT.",
+      narasi: `
+        <p class="mb-2">Kebijakan terkait adalah sebagai berikut:</p>
+        <ul class="list-decimal ml-4 space-y-1 mb-2">
+          <li>Kebijakan sistem penjaminan mutu internal (SPMI)...</li>
+          <li>Peraturan Rektor No. 3 Tahun 2023...</li>
+        </ul>
+        <table class="w-full border border-gray-200 text-[10px]">
+          <tr class="bg-gray-50">
+            <th class="border px-2 py-1 text-left">Pernyataan Standar</th>
+            <th class="border px-2 py-1 text-left">Indikator</th>
+          </tr>
+          <tr>
+            <td class="border px-2 py-1">Universitas harus menyediakan fasilitas...</td>
+            <td class="border px-2 py-1">Tersedianya sarana dan prasarana...</td>
+          </tr>
+        </table>
+      `,
     },
     {
-      butir: "1.2",
-      bakuMutu: "Terlaksananya siklus PPEPP",
-      elemenNarasi:
-        "Terdapat bukti pelaksanaan Penetapan, Pelaksanaan, Evaluasi, Pengendalian, dan Peningkatan.",
-      pathDetail: "#",
+      butir: "",
+      element: "",
+      dokumen:
+        "1.1.A.2 Kebijakan, standar, dan indikator terkait Sistem Tata Kelola UPPS dan/atau PT berikut SOP, yang mencakup administrasi keuangan dalam siklus PPEPP, di tingkat UPPS dan/atau PT.",
+      narasi: `
+        <p class="mb-2">Kebijakan terkait adalah sebagai berikut:</p>
+        <ul class="list-decimal ml-4 space-y-1 mb-2">
+          <li>Kebijakan sistem penjaminan mutu internal (SPMI)...</li>
+          <li>Peraturan Rektor No. 3 Tahun 2023...</li>
+        </ul>
+        <table class="w-full border border-gray-200 text-[10px]">
+          <tr class="bg-gray-50">
+            <th class="border px-2 py-1 text-left">Pernyataan Standar</th>
+            <th class="border px-2 py-1 text-left">Indikator</th>
+          </tr>
+          <tr>
+            <td class="border px-2 py-1">Universitas harus menyediakan fasilitas...</td>
+            <td class="border px-2 py-1">Tersedianya sarana dan prasarana...</td>
+          </tr>
+        </table>
+      `,
     },
     {
-      butir: "1.3",
-      bakuMutu: "Audit Mutu Internal (AMI)",
-      elemenNarasi:
-        "Laporan AMI menunjukkan temuan yang ditindaklanjuti secara konsisten setiap tahun.",
-      pathDetail: "#",
+      butir: "1.2 [PELAKSANAAN]",
+      element:
+        "1.1.A. Kebijakan, standar, dan indikator terkait Sistem Tata Kelola UPPS dan/atau PT berikut SOP, yang mencakup administrasi akademik, keuangan, SDM, dan aspek lain dalam siklus PPEPP, di tingkat UPPS dan/atau PT.",
+      dokumen:
+        "1.1.A.1 Kebijakan, standar, dan indikator terkait Sistem Tata Kelola UPPS dan/atau PT berikut SOP, yang mencakup administrasi akademik dalam siklus PPEPP, di tingkat UPPS dan/atau PT.",
+      narasi: `
+        <p class="mb-2">Kebijakan terkait adalah sebagai berikut:</p>
+        <ul class="list-decimal ml-4 space-y-1 mb-2">
+          <li>Kebijakan sistem penjaminan mutu internal (SPMI)...</li>
+          <li>Peraturan Rektor No. 3 Tahun 2023...</li>
+        </ul>
+        <table class="w-full border border-gray-200 text-[10px]">
+          <tr class="bg-gray-50">
+            <th class="border px-2 py-1 text-left">Pernyataan Standar</th>
+            <th class="border px-2 py-1 text-left">Indikator</th>
+          </tr>
+          <tr>
+            <td class="border px-2 py-1">Universitas harus menyediakan fasilitas...</td>
+            <td class="border px-2 py-1">Tersedianya sarana dan prasarana...</td>
+          </tr>
+        </table>
+      `,
+    },
+    {
+      butir: "1.3 [EVALUASI]",
+      element:
+        "1.1.A. Kebijakan, standar, dan indikator terkait Sistem Tata Kelola UPPS dan/atau PT berikut SOP, yang mencakup administrasi akademik, keuangan, SDM, dan aspek lain dalam siklus PPEPP, di tingkat UPPS dan/atau PT.",
+      dokumen:
+        "1.1.A.1 Kebijakan, standar, dan indikator terkait Sistem Tata Kelola UPPS dan/atau PT berikut SOP, yang mencakup administrasi akademik dalam siklus PPEPP, di tingkat UPPS dan/atau PT.",
+      narasi: `
+        <p class="mb-2">Kebijakan terkait adalah sebagai berikut:</p>
+        <ul class="list-decimal ml-4 space-y-1 mb-2">
+          <li>Kebijakan sistem penjaminan mutu internal (SPMI)...</li>
+          <li>Peraturan Rektor No. 3 Tahun 2023...</li>
+        </ul>
+        <table class="w-full border border-gray-200 text-[10px]">
+          <tr class="bg-gray-50">
+            <th class="border px-2 py-1 text-left">Pernyataan Standar</th>
+            <th class="border px-2 py-1 text-left">Indikator</th>
+          </tr>
+          <tr>
+            <td class="border px-2 py-1">Universitas harus menyediakan fasilitas...</td>
+            <td class="border px-2 py-1">Tersedianya sarana dan prasarana...</td>
+          </tr>
+        </table>
+      `,
+    },
+    {
+      butir: "1.4 [PENGENDALIAN]",
+      element:
+        "1.1.A. Kebijakan, standar, dan indikator terkait Sistem Tata Kelola UPPS dan/atau PT berikut SOP, yang mencakup administrasi akademik, keuangan, SDM, dan aspek lain dalam siklus PPEPP, di tingkat UPPS dan/atau PT.",
+      dokumen:
+        "1.1.A.1 Kebijakan, standar, dan indikator terkait Sistem Tata Kelola UPPS dan/atau PT berikut SOP, yang mencakup administrasi akademik dalam siklus PPEPP, di tingkat UPPS dan/atau PT.",
+      narasi: `
+        <p class="mb-2">Kebijakan terkait adalah sebagai berikut:</p>
+        <ul class="list-decimal ml-4 space-y-1 mb-2">
+          <li>Kebijakan sistem penjaminan mutu internal (SPMI)...</li>
+          <li>Peraturan Rektor No. 3 Tahun 2023...</li>
+        </ul>
+        <table class="w-full border border-gray-200 text-[10px]">
+          <tr class="bg-gray-50">
+            <th class="border px-2 py-1 text-left">Pernyataan Standar</th>
+            <th class="border px-2 py-1 text-left">Indikator</th>
+          </tr>
+          <tr>
+            <td class="border px-2 py-1">Universitas harus menyediakan fasilitas...</td>
+            <td class="border px-2 py-1">Tersedianya sarana dan prasarana...</td>
+          </tr>
+        </table>
+      `,
+    },
+    {
+      butir: "1.5 [PENINGKATAS]",
+      element:
+        "1.1.A. Kebijakan, standar, dan indikator terkait Sistem Tata Kelola UPPS dan/atau PT berikut SOP, yang mencakup administrasi akademik, keuangan, SDM, dan aspek lain dalam siklus PPEPP, di tingkat UPPS dan/atau PT.",
+      dokumen:
+        "1.1.A.1 Kebijakan, standar, dan indikator terkait Sistem Tata Kelola UPPS dan/atau PT berikut SOP, yang mencakup administrasi akademik dalam siklus PPEPP, di tingkat UPPS dan/atau PT.",
+      narasi: `
+        <p class="mb-2">Kebijakan terkait adalah sebagai berikut:</p>
+        <ul class="list-decimal ml-4 space-y-1 mb-2">
+          <li>Kebijakan sistem penjaminan mutu internal (SPMI)...</li>
+          <li>Peraturan Rektor No. 3 Tahun 2023...</li>
+        </ul>
+        <table class="w-full border border-gray-200 text-[10px]">
+          <tr class="bg-gray-50">
+            <th class="border px-2 py-1 text-left">Pernyataan Standar</th>
+            <th class="border px-2 py-1 text-left">Indikator</th>
+          </tr>
+          <tr>
+            <td class="border px-2 py-1">Universitas harus menyediakan fasilitas...</td>
+            <td class="border px-2 py-1">Tersedianya sarana dan prasarana...</td>
+          </tr>
+        </table>
+      `,
     },
   ];
 
   return (
     <div className="min-h-screen bg-gray-50">
       <Navbar />
-
-      {/* Header Halaman */}
-      <header className="bg-white border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          {/* <button
-            onClick={() => navigate("/dashboard")}
-            className="flex items-center text-sm text-gray-500 hover:text-[#A50000] transition mb-2"
-          >
-            <ChevronLeft className="w-4 h-4 mr-1" /> Kembali ke Dashboard
-          </button> */}
-          <h1 className="text-2xl font-bold text-gray-800">C1: BUDAYA MUTU</h1>
-          <p className="text-[#00B4D8] text-sm font-medium uppercase tracking-widest">
-            Teknik Informatika UNTAG Surabaya
-          </p>
-        </div>
-      </header>
-
-      {/* Main Content Area */}
-      <main className="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+      <main className="max-w-[98%] mx-auto py-8 px-4">
         <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-          <table className="min-w-full divide-y divide-gray-200">
-            <thead className="bg-[#f8fafc]">
+          <table className="min-w-full table-fixed divide-y divide-gray-200">
+            <thead className="bg-sky-500">
               <tr>
-                <th className="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase">
-                  Butir
+                <th className="w-[8%] px-4 py-4 text-left text-xs font-bold text-white uppercase">
+                  BUTIR
                 </th>
-                <th className="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase">
-                  Baku Mutu
+                <th className="w-[10%] px-4 py-4 text-left text-xs font-bold text-white uppercase">
+                  ELEMEN
                 </th>
-                <th className="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase">
-                  Elemen & Narasi
+                <th className="w-[10%] px-4 py-4 text-left text-xs font-bold text-white uppercase">
+                  INDIKATOR
                 </th>
-                <th className="px-6 py-4 text-center text-xs font-bold text-gray-500 uppercase">
-                  Detail Dokumen
+                <th className="w-[67%] px-4 py-4 text-center text-xs font-bold text-white uppercase">
+                  NARASI
+                </th>
+                <th className="w-[5%] px-4 py-4 text-center text-xs font-bold text-white uppercase">
+                  DETAIL
                 </th>
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-100">
               {dataBudayaMutu.map((item, index) => (
-                <tr
-                  key={index}
-                  className="hover:bg-red-50/20 transition-colors"
-                >
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-[#A50000]">
+                <tr key={index} className="hover:bg-gray-50/50">
+                  <td className="px-4 py-4 align-top text-xs font-bold text-[#A50000]">
                     {item.butir}
                   </td>
-                  <td className="px-6 py-4 text-sm font-semibold text-gray-700 w-1/4">
-                    {item.bakuMutu}
+                  <td className="px-4 py-4 align-top text-[10px] text-gray-700">
+                    {item.element}
                   </td>
-                  <td className="px-6 py-4 text-sm text-gray-600 leading-relaxed">
-                    {item.elemenNarasi}
+                  <td className="px-4 py-4 align-top text-[10px] text-gray-700">
+                    {item.dokumen}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-center">
-                    <button className="p-2 bg-gray-100 hover:bg-[#00B4D8] hover:text-white text-gray-600 rounded-lg transition-all shadow-sm">
-                      <FileSearch className="w-5 h-5" />
+
+                  {/* KOLOM NARASI DENGAN READ MORE */}
+                  <td className="px-8 py-4 align-top text-left">
+                    <div className="relative">
+                      <div
+                        dangerouslySetInnerHTML={{ __html: item.narasi }}
+                        className={`text-[10px] text-gray-600 leading-relaxed overflow-hidden transition-all duration-500 ${
+                          expandedIndex === index
+                            ? "max-h-[2000px]"
+                            : "max-h-[80px]"
+                        }`}
+                      />
+                      {expandedIndex !== index && (
+                        <div className="absolute bottom-0 left-0 w-full h-6 bg-gradient-to-t from-white to-transparent" />
+                      )}
+                    </div>
+                    <button
+                      onClick={() =>
+                        setExpandedIndex(expandedIndex === index ? null : index)
+                      }
+                      className="mt-2 text-[#00B4D8] hover:underline font-bold text-[10px] flex items-center gap-1"
+                    >
+                      {expandedIndex === index
+                        ? "Baca Sedikit ▲"
+                        : "Baca Selengkapnya ▼"}
+                    </button>
+                  </td>
+
+                  <td className="px-4 py-4 align-top text-center">
+                    <button className="p-2 bg-gray-100 hover:bg-sky-500 hover:text-white rounded-lg transition-all">
+                      <FileSearch className="w-4 h-4" />
                     </button>
                   </td>
                 </tr>
