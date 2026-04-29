@@ -1,10 +1,10 @@
 import React from "react";
 import Navbar from "../../components/Navbar";
 import { FileSearch, ChevronLeft } from "lucide-react";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const RelevansiPendidikan = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   // Data dummy sesuai permintaan: 4 kolom (Butir, Baku Mutu, Elemen/Narasi, Detail)
   // Saya gabungkan Elemen & Narasi agar pas 4 kolom utama yang efektif
@@ -14,7 +14,8 @@ const RelevansiPendidikan = () => {
       bakuMutu: "Ketersediaan dokumen formal SPMI",
       elemenNarasi:
         "Prodi memiliki dokumen kebijakan SPMI yang lengkap dan disahkan oleh Dekan.",
-      pathDetail: "#",
+      pathDetail:
+        "https://amanda-ajalah.github.io/akreditasi-infor/#/budaya-mutu",
     },
     {
       butir: "1.2",
@@ -90,8 +91,12 @@ const RelevansiPendidikan = () => {
                     {item.elemenNarasi}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-center">
-                    <button className="p-2 bg-gray-100 hover:bg-[#00B4D8] hover:text-white text-gray-600 rounded-lg transition-all shadow-sm">
+                    <button
+                      onClick={() => navigate(item.pathDetail)}
+                      className="p-2 bg-gray-100 hover:bg-[#00B4D8] hover:text-white text-gray-600 rounded-lg transition-all shadow-sm"
+                    >
                       <FileSearch className="w-5 h-5" />
+                      File Dokumen
                     </button>
                   </td>
                 </tr>

@@ -7,7 +7,6 @@ import {
 } from "react-router-dom";
 
 // Import Pages (Pastikan nama file di folder 'pages' sama persis huruf besar/kecilnya)
-import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 
 //  Kondisis Eksternal
@@ -42,10 +41,9 @@ function App() {
   return (
     <Router>
       <Routes>
-        {/* Saat pertama buka web, arahkan ke Login */}
-        <Route path="/" element={<Navigate to="/login" />} />
+        {/* Saat pertama buka web, arahkan ke dasboard */}
+        <Route path="/" element={<Navigate to="/dashboard" />} />
 
-        <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
 
         {/* Kondisi Eksternal */}

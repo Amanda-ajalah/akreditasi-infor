@@ -17,7 +17,7 @@ const Navbar = () => {
       {/* --- BARIS ATAS: Branding Section (Tinggi 80px) ---
         Kita gunakan padding agar logo dan judul tidak menempel di ujung layar.
       */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 h-20 flex items-center justify-between">
+      <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-12 h-20 flex items-center justify-between">
         {/* Logo Area (Kiri) - Teks Memanjang Rapi */}
         <div className="flex items-center space-x-4">
           {/* Bagian UNTAG SURABAYA */}
@@ -263,18 +263,6 @@ const Navbar = () => {
               </div>
             </div>
           </div>
-
-          {/* User Section (Logout) */}
-          <button
-            onClick={() => navigate("/login")}
-            className="text-xs font-bold text-red-800 hover:text-red-600 uppercase tracking-widest flex items-center group transition"
-          >
-            <LogOut
-              size={16}
-              className="mr-2 group-hover:-translate-x-1 transition-transform"
-            />
-            Keluar
-          </button>
         </div>
       </div>
 
@@ -293,12 +281,6 @@ const Navbar = () => {
               className="block w-full text-left py-2.5 font-bold text-gray-700 border-b border-gray-50"
             >
               Budaya Mutu
-            </button>
-            <button
-              onClick={() => navigate("/login")}
-              className="block py-2.5 w-full text-left font-bold text-[#A50000]"
-            >
-              Keluar
             </button>
           </div>
         </div>
